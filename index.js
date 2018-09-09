@@ -184,7 +184,7 @@ function format(answers) {
   const scope = answers.scope ? `(${answers.scope.trim()})` : '';
 
   // Build head line, add emoji and limit to 100
-  const head = truncate(`${answers.type}${scope}: ${emojis[answers.type].symbol} ${answers.subject.trim()}`, 100);
+  const head = truncate(`${answers.type}${scope}: ${emojis[answers.type].code} ${answers.subject.trim()}`, 100);
   const body = wrap(answers.body, 100);
   const footer = (answers.issues.match(/#\d+/g) || [])
     .map(issue => `Closes ${issue}`)
