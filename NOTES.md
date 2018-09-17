@@ -5,7 +5,6 @@
 
 - [ ] fetch from gitmoji repo
 - [ ] use cache?
-- [ ] commit message length ? (max 100)
-- [ ] add `imp` for `improvement` to [types](conventional-commit-types)
-- [ ] add gitmoji autocomplete for commit message?
-- [ ] is it possible to put gitmoji first? (being compliant with `conventionalCommits` tools)
+- [x] commit message length ? (max 100)
+- [x] add `imp` for `improvement` to [types](conventional-commit-types)
+- [x] add gitmoji autocomplete for commit message?
