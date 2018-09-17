@@ -15,7 +15,6 @@ const gitmojis = require('./gitmojis');
 
 const cwd = process.cwd();
 const defaultConfig = {
-  // types: {},
   additionalTypes: {
     imp: {
       description: 'Improves a current implementation without adding a new feature or fixing a bug',
@@ -23,11 +22,13 @@ const defaultConfig = {
     },
   },
   useEmojis: true,
-  // emojis: [],
   additionalEmojis: [],
   useScopes: true,
-  // scopes: [],
   additionalScopes: [],
+  // You can use yours
+  // types: {},
+  // emojis: [],
+  // scopes: [],
 };
 
 /**
