@@ -13,7 +13,7 @@
   "main": "index.js",
   "files": [
     "index.js",
-    "emojis.js"
+    "gitmojis.js"
   ],
   "scripts": {
     "commit": "npx git-cz || exit 0",
