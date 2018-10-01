@@ -1,0 +1,11 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "__tests__/packages/bar/package.json",
+        "__tests__/packages/foo/package.json",
+        "package.json"
+      ]
+    }
+  }
+}
