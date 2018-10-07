@@ -8,3 +8,5 @@
 - [x] commit message length ? (max 100)
 - [x] add `imp` for `improvement` to [types](conventional-commit-types)
 - [x] add gitmoji autocomplete for commit message?
+
+Peer dependency: `npm i -D inquirer@5`

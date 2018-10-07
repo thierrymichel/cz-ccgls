@@ -138,8 +138,9 @@ async function loadOptions(config) {
  * 2. Scope
  * 3. Gitmoji
  * 4. Subject (short)
- * 5. Issues
- * 6. Body (long)
+ * 5. Body (long)
+ * 6. Breaking
+ * 7. Issues
  *
  * @param {object} options from `loadOptions`
  * @return {array} list of questions
@@ -184,17 +185,29 @@ function fillPrompt(options) {
     {
       type: 'input',
       name: 'subject',
-      message: 'Write a short description:',
+      message: 'Write a short description:\n',
+    },
+    {
+      type: 'input',
+      name: 'body',
+      message: 'Provide a longer description:\n',
+    },
+    {
+      type: 'confirm',
+      name: 'isBreaking',
+      message: 'Are there any breaking changes?',
+      default: false,
+    },
+    {
+      type: 'input',
+      name: 'breaking',
+      message: 'Describe the breaking changes:\n',
+      when: answers => answers.isBreaking,
     },
     {
       type: 'input',
       name: 'issues',
       message: 'List any issue closed (#1, ...):',
-    },
-    {
-      type: 'input',
-      name: 'body',
-      message: 'Provide a longer description:',
     },
   ];
 
@@ -236,12 +249,16 @@ function format(answers) {
 
   // Build head line, add emoji and limit to 100
   const head = truncate(`${answers.type}${scope}: ${subject.trim()}`, 100);
-  const body = wrap(answers.body, 100);
+  const body = answers.body ? wrap(answers.body, 100) : '';
+  const breaking = answers.breaking ?
+    wrap(`BREAKING CHANGE: ${answers.breaking.trim()}`, 100) :
+    '';
   const footer = (answers.issues.match(/#\d+/g) || [])
     .map(issue => `Closes ${issue}`)
     .join('\n');
 
-  return [head, body, footer]
+  return [head, body, breaking, footer]
+    .filter(part => part.length > 0)
     .join('\n\n')
     .trim();
 }
