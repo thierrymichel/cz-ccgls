@@ -52,6 +52,7 @@
     "path-exists": "^4.0.0",
     "read-pkg-up": "^7.0.1",
     "right-pad": "^1.0.1",
+    "rxjs": "^6.5.3",
     "wrap-ansi": "^6.2.0"
   },
   "devDependencies": {
