@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/thierrymichel/cz-ccgls/compare/v0.2.1...v0.2.2) (2019-12-08)
+
+
+### Bug Fixes
+
+* **root:** :bug: add missing dependency ([7aebeb0](https://github.com/thierrymichel/cz-ccgls/commit/7aebeb0db52bb81e5ef6e92fa2c468827e367b5f))
+
 ### [0.2.1](https://github.com/thierrymichel/cz-ccgls/compare/v0.2.0...v0.2.1) (2019-12-08)
 
 
