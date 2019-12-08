@@ -1,6 +1,18 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [0.2.1](https://github.com/thierrymichel/cz-ccgls/compare/v0.2.0...v0.2.1) (2019-12-08)
+
+
+### Features
+
+* **root:** :sparkles: fetch and cache gitmojis from official repo ([a054f39](https://github.com/thierrymichel/cz-ccgls/commit/a054f3972f39562e0ea2e2b38230690e1a6dd59e))
+
+
+### Bug Fixes
+
+* **root:** :arrow_up: upgrade deps and audit fix ([7caf8b0](https://github.com/thierrymichel/cz-ccgls/commit/7caf8b03bd58b940a70831fd509890ab7d5f0645))
 
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/thierrymichel/cz-ccgls/compare/v0.1.1...v0.2.0) (2018-10-07)
