@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.3](https://github.com/thierrymichel/cz-ccgls/compare/v0.2.2...v0.2.3) (2020-04-16)
+
+
+### Bug Fixes
+
+* **root:** :bug: fix config reading ([7ba66a6](https://github.com/thierrymichel/cz-ccgls/commit/7ba66a6f515d879eda9558f4b04c00940ed462ab))
+
 ### [0.2.2](https://github.com/thierrymichel/cz-ccgls/compare/v0.2.1...v0.2.2) (2019-12-08)
 
 
