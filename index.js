@@ -43,7 +43,7 @@ function loadConfig() {
   // Start with `package.json`
   return (
     readPkg()
-      .then(({ pkg }) => {
+      .then(({ packageJson: pkg }) => {
         const config = getConfig(pkg)
 
         if (config) {
