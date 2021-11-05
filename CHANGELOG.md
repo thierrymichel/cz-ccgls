@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.3.1](https://github.com/thierrymichel/cz-ccgls/compare/v0.3.0...v0.3.1) (2021-11-05)
+
+
+### Bug Fixes
+
+* :green_heart: remove unused script ([597d843](https://github.com/thierrymichel/cz-ccgls/commit/597d843999c195cb3d2986e3954c7b3348649a31))
+
 # [0.3.0](https://github.com/thierrymichel/cz-ccgls/compare/v0.2.3...v0.3.0) (2021-11-05)
 
 

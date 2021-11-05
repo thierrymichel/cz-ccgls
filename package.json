@@ -1,6 +1,6 @@
 {
   "name": "cz-ccgls",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Commitizen adapter following the Conventional-Changelog with support for Gitmoji and Lerna Scopes.",
   "keywords": [
     "commit",
