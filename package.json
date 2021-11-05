@@ -10,18 +10,6 @@
     "lerna",
     "scope"
   ],
-  "main": "index.js",
-  "files": [
-    "index.js",
-    "gitmojis.js"
-  ],
-  "scripts": {
-    "commit": "npx git-cz || exit 0",
-    "publish": "git push --follow-tags && npm publish",
-    "release": "standard-version",
-    "start": "node index.js",
-    "test": "echo 'Tests need to be setup!'"
-  },
   "homepage": "https://github.com/thierrymichel/cz-ccgls#readme",
   "repository": {
     "type": "git",
@@ -36,33 +24,72 @@
     "url": "https://github.com/thierrymichel/cz-ccgls/issues"
   },
   "license": "SEE LICENSE IN UNLICENSE",
-  "dependencies": {
-    "chalk": "^3.0.0",
-    "cli-truncate": "^2.1.0",
-    "conventional-commit-types": "^2.3.0",
-    "find-cache-dir": "^3.1.0",
-    "fuzzy": "^0.1.3",
-    "import-from": "^3.0.0",
-    "inquirer": "^7.0.0",
-    "inquirer-autocomplete-prompt": "^1.0.1",
-    "lodash.map": "^4.6.0",
-    "longest": "^2.0.1",
-    "node-fetch": "^2.6.0",
-    "ora": "^4.0.3",
-    "path-exists": "^4.0.0",
-    "read-pkg-up": "^7.0.1",
-    "right-pad": "^1.0.1",
-    "rxjs": "^6.5.3",
-    "wrap-ansi": "^6.2.0"
-  },
-  "devDependencies": {
-    "commitizen": "^4.0.3",
-    "lerna": "^3.19.0",
-    "standard-version": "^7.0.1"
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.mjs",
+  "exports": "./lib/index.mjs",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "nps build",
+    "commit": "npx git-cz || exit 0",
+    "commit-retry": "npx git-cz --retry || exit 0",
+    "coverage": "cat ./coverage/lcov.info | coveralls",
+    "lint": "eslint src/**/*.mjs",
+    "publish": "git push --follow-tags && npm publish",
+    "semantic-release": "semantic-release",
+    "test": "cross-env 'NODE_OPTIONS=--experimental-loader @istanbuljs/esm-loader-hook' nyc --reporter=lcov --reporter=text node spec/specs.js"
   },
   "config": {
     "commitizen": {
-      "path": "./index.js"
+      "path": "./lib/index.cjs.js"
+    },
+    "cz-ccgls": {
+      "useScopes": false
     }
+  },
+  "packageManager": "yarn@3.0.2",
+  "dependencies": {
+    "cli-truncate": "^3.1.0",
+    "conventional-commit-types": "^3.0.0",
+    "find-cache-dir": "^3.3.2",
+    "fuzzy": "^0.1.3",
+    "import-from": "^4.0.0",
+    "inquirer": "^8.2.0",
+    "inquirer-autocomplete-prompt": "^1.4.0",
+    "lodash.map": "^4.6.0",
+    "longest": "^2.0.1",
+    "node-fetch": "^3.0.0",
+    "ora": "^6.0.1",
+    "path-exists": "^5.0.0",
+    "read-pkg-up": "^9.0.0",
+    "right-pad": "^1.0.1",
+    "wrap-ansi": "^8.0.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^14.1.0",
+    "@commitlint/config-conventional": "^14.1.0",
+    "@istanbuljs/esm-loader-hook": "^0.1.2",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "commitizen": "^4.2.4",
+    "commitlint-config-ccgls": "^1.2.0",
+    "coveralls": "^3.1.1",
+    "cross-env": "^7.0.3",
+    "esbuild": "^0.13.12",
+    "eslint": "^8.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "jasmine": "^3.10.0",
+    "jasmine-console-reporter": "^3.1.0",
+    "jasmine-node": "^3.0.0",
+    "lint-staged": "^11.2.6",
+    "ncp": "^2.0.0",
+    "nps": "^5.10.0",
+    "nps-utils": "^1.7.0",
+    "nyc": "^15.1.0",
+    "prettier": "^2.4.1",
+    "rimraf": "^3.0.2",
+    "semantic-release": "^18.0.0"
   }
 }

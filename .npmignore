@@ -1,0 +1,15 @@
+### Custom ###
+
+# Folders
+/__tests__
+/.vscode
+/.yarn
+/build
+/src
+
+# Files
+/.editorconfig
+/.eslintrc.js
+/.nvmrc
+/package-scripts.js
+/prettier.config.js
