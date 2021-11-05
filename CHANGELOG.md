@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.3.3](https://github.com/thierrymichel/cz-ccgls/compare/v0.3.2...v0.3.3) (2021-11-05)
+
+
+### Bug Fixes
+
+* :bug: fix `node:fs` not resolved ([3520550](https://github.com/thierrymichel/cz-ccgls/commit/3520550aed09bff5268e909cfc25faf500903602))
+
 ## [0.3.2](https://github.com/thierrymichel/cz-ccgls/compare/v0.3.1...v0.3.2) (2021-11-05)
 
 
