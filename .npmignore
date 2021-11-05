@@ -2,14 +2,25 @@
 
 # Folders
 /__tests__
+/.github
+/.husky
+/.nyc_output
 /.vscode
 /.yarn
 /build
+/coverage
+/spec
 /src
 
 # Files
 /.editorconfig
 /.eslintrc.js
+/.lintstagedrc
+/.markdownlint.json
 /.nvmrc
+/.yarnrc.yml
+/commitlint.config.js
+/nyc.config.js
 /package-scripts.js
 /prettier.config.js
+/release.config.js
