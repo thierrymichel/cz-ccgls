@@ -1,3 +1,17 @@
+# CHANGELOG
+
+# [0.3.0](https://github.com/thierrymichel/cz-ccgls/compare/v0.2.3...v0.3.0) (2021-11-05)
+
+
+### Bug Fixes
+
+* :construction_worker: add missing script ([e5651f0](https://github.com/thierrymichel/cz-ccgls/commit/e5651f02ed493cd5e97ae3c65b00be18575aacab))
+
+
+### Features
+
+* :recycle: try native ES modules ([e0ffd21](https://github.com/thierrymichel/cz-ccgls/commit/e0ffd21c2b24721b7c0d5f1bbd41a34d59ea9f8f))
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
