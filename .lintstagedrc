@@ -1,0 +1,4 @@
+{
+  "src/**/*.mjs": ["prettier --write", "yarn lint"],
+  "*.{json,md}": ["prettier --write"]
+}

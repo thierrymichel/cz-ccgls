@@ -198,7 +198,7 @@ module.exports = {
         allowShortCircuit: true,
       },
     ],
-    'no-unused-vars': 'off',
+    'no-unused-vars': 2,
     'no-useless-call': 2,
     'no-useless-computed-key': 2,
     'no-useless-concat': 2,
