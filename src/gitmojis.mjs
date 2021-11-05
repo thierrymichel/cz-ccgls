@@ -1,11 +1,10 @@
-const fs = require('fs')
-const path = require('path')
+import fs from 'node:fs'
+import path from 'node:path'
 
-const chalk = require('chalk')
-const fetch = require('node-fetch')
-const findCacheDir = require('find-cache-dir')
-const pathExists = require('path-exists')
-const ora = require('ora')
+import fetch from 'node-fetch'
+import findCacheDir from 'find-cache-dir'
+import { pathExistsSync } from 'path-exists'
+import ora from 'ora'
 
 const GITMOJI_CACHE = {
   DIR: findCacheDir({ name: 'ccgls' }),
@@ -16,19 +15,19 @@ const GITMOJI_CACHE = {
 const filename = path.join(GITMOJI_CACHE.DIR, GITMOJI_CACHE.FILE)
 const cache = {
   ok() {
-    if (!pathExists.sync(filename)) {
-      return false
-    } else {
+    if (pathExistsSync(filename)) {
       const { mtime } = fs.statSync(filename)
 
       return mtime.getMilliseconds() + GITMOJI_CACHE.TTL < Date.now()
     }
+
+    return false
   },
   get() {
     return Promise.resolve(JSON.parse(fs.readFileSync(filename)))
   },
   set(emojis) {
-    if (!pathExists.sync(path.dirname(filename))) {
+    if (!pathExistsSync(path.dirname(filename))) {
       fs.mkdirSync(path.dirname(filename), { recursive: true })
     }
 
@@ -39,7 +38,7 @@ const cache = {
 const GITMOJIS_URL =
   'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json'
 
-async function getEmojis() {
+function getEmojis() {
   if (cache.ok()) {
     return cache.get()
   }
@@ -61,4 +60,8 @@ async function getEmojis() {
     })
 }
 
-module.exports = getEmojis
+export { getEmojis }
+
+export function sum(a, b) {
+  return a + b
+}

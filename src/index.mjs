@@ -1,18 +1,25 @@
-const autocomplete = require('inquirer-autocomplete-prompt')
-const fs = require('fs')
-const fuzzy = require('fuzzy')
-const importFrom = require('import-from')
-const longest = require('longest')
-const map = require('lodash.map')
-const path = require('path')
-const readPkg = require('read-pkg-up')
-const rightPad = require('right-pad')
-const truncate = require('cli-truncate')
-const wrap = require('wrap-ansi')
+import fs from 'node:fs'
+import path from 'node:path'
 
-const { types: conventionalTypes } = require('conventional-commit-types')
-const getEmojis = require('./gitmojis')
+import autocomplete from 'inquirer-autocomplete-prompt'
+import fuzzy from 'fuzzy'
+import importFrom from 'import-from'
+import longest from 'longest'
+import map from 'lodash.map'
+import { readPackageUp } from 'read-pkg-up'
+import rightPad from 'right-pad'
+import truncate from 'cli-truncate'
+import wrap from 'wrap-ansi'
 
+import { getEmojis } from './gitmojis.mjs'
+
+// https://www.stefanjudis.com/snippets/how-to-import-json-files-in-es-modules-node-js/
+import { createRequire } from 'module'
+const requireJSON = createRequire(
+  import.meta.url || path.resolve(__dirname, '../node_modules') // CJS support
+)
+const types = requireJSON('conventional-commit-types')
+const conventionalTypes = types.types
 const cwd = process.cwd()
 const defaultConfig = {
   additionalTypes: {
@@ -42,7 +49,7 @@ function loadConfig() {
 
   // Start with `package.json`
   return (
-    readPkg()
+    readPackageUp()
       .then(({ packageJson: pkg }) => {
         const config = getConfig(pkg)
 
@@ -155,9 +162,10 @@ function fillPrompt(options) {
     {
       type: 'autocomplete',
       name: 'type',
+      // eslint-disable-next-line quotes
       message: "Select the type of change you're committing:",
 
-      source: (answersSoFar, input) => {
+      source: (_answersSoFar, input) => {
         const query = input || ''
 
         return new Promise(resolve => {
@@ -272,16 +280,14 @@ function format(answers) {
 /**
  * Export `prompter` method for `commitizen`.
  */
-module.exports = {
-  prompter(cz, commit) {
-    cz.prompt.registerPrompt('autocomplete', autocomplete)
-    loadConfig()
-      .then(loadOptions)
-      .then(fillPrompt)
-      .then(cz.prompt)
-      .then(format)
-      .then(commit)
-  },
+export function prompter(cz, commit) {
+  cz.prompt.registerPrompt('autocomplete', autocomplete)
+  loadConfig()
+    .then(loadOptions)
+    .then(fillPrompt)
+    .then(cz.prompt)
+    .then(format)
+    .then(commit)
 }
 
 /**
