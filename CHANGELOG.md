@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.3.4](https://github.com/thierrymichel/cz-ccgls/compare/v0.3.3...v0.3.4) (2021-11-05)
+
+
+### Bug Fixes
+
+* :hammer: esbuild plugin for nodeJS core modules ([3831f54](https://github.com/thierrymichel/cz-ccgls/commit/3831f54c13fb81ab7e7047d9664768eb61b4e07d))
+
 ## [0.3.3](https://github.com/thierrymichel/cz-ccgls/compare/v0.3.2...v0.3.3) (2021-11-05)
 
 
