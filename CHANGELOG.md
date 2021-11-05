@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.3.2](https://github.com/thierrymichel/cz-ccgls/compare/v0.3.1...v0.3.2) (2021-11-05)
+
+
+### Bug Fixes
+
+* :see_no_evil: npmignore new files ([a075bac](https://github.com/thierrymichel/cz-ccgls/commit/a075bacbf0a2f07bb3ce569af0c02dc45818bded))
+
 ## [0.3.1](https://github.com/thierrymichel/cz-ccgls/compare/v0.3.0...v0.3.1) (2021-11-05)
 
 
