@@ -36,7 +36,6 @@
     "commit-retry": "npx git-cz --retry || exit 0",
     "coverage": "cat ./coverage/lcov.info | coveralls",
     "lint": "eslint src/**/*.mjs",
-    "publish": "git push --follow-tags && npm publish",
     "semantic-release": "semantic-release",
     "test": "cross-env 'NODE_OPTIONS=--experimental-loader @istanbuljs/esm-loader-hook' nyc --reporter=lcov --reporter=text node spec/specs.js"
   },
