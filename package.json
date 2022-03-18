@@ -30,6 +30,9 @@
   "files": [
     "lib"
   ],
+  "bin": {
+    "cz-ccgls": "./lib/index.cjs.js"
+  },
   "scripts": {
     "build": "nps build",
     "commit": "npx git-cz || exit 0",
