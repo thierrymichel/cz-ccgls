@@ -1,5 +1,19 @@
 # CHANGELOG
 
+# [0.4.0](https://github.com/thierrymichel/cz-ccgls/compare/v0.3.4...v0.4.0) (2022-03-18)
+
+
+### Bug Fixes
+
+* :arrow_up: fix build ([f693b5d](https://github.com/thierrymichel/cz-ccgls/commit/f693b5dc0b3b0dd84f6e30a27cc26b7d85d43def))
+* :bug: fix missing global lerna package when using scopes ([e2d73cc](https://github.com/thierrymichel/cz-ccgls/commit/e2d73cc4771cdfef0adac6b26efafb7ea4f05f86)), closes [/github.com/thierrymichel/cz-ccgls/issues/3#issue-1165453780](https://github.com//github.com/thierrymichel/cz-ccgls/issues/3/issues/issue-1165453780)
+* :wrench: fix `bin` value ([0d22a3c](https://github.com/thierrymichel/cz-ccgls/commit/0d22a3cdcfb5234de956b99e134e2b183a837181))
+
+
+### Features
+
+* :sparkles: add npm `bin` (for global use) ([cd7c519](https://github.com/thierrymichel/cz-ccgls/commit/cd7c519423069e9d7327f1cced47fe5d25eae2fe)), closes [/github.com/thierrymichel/cz-ccgls/issues/3#issuecomment-1064262798](https://github.com//github.com/thierrymichel/cz-ccgls/issues/3/issues/issuecomment-1064262798)
+
 ## [0.3.4](https://github.com/thierrymichel/cz-ccgls/compare/v0.3.3...v0.3.4) (2021-11-05)
 
 
