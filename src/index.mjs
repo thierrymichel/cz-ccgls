@@ -128,13 +128,18 @@ async function loadOptions(config) {
     if (config.scopes) {
       options.scopes = config.scopes
     } else {
-      const Project = importFrom(cwd, '@lerna/project')
-      const project = new Project(cwd)
-      const packages = await project.getPackages()
+      const Project = importFrom.silent(cwd, '@lerna/project')
 
-      options.scopes = packages
-        .map(pkg => pkg.name)
-        .map(name => (name.charAt(0) === '@' ? name.split('/')[1] : name))
+      if (Project) {
+        const project = new Project(cwd)
+        const packages = await project.getPackages()
+
+        options.scopes = packages
+          .map(pkg => pkg.name)
+          .map(name => (name.charAt(0) === '@' ? name.split('/')[1] : name))
+      } else {
+        options.scopes = []
+      }
     }
 
     options.scopes = [...options.scopes, ...config.additionalScopes]
