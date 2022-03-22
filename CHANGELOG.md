@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.4.2](https://github.com/thierrymichel/cz-ccgls/compare/v0.4.1...v0.4.2) (2022-03-22)
+
+
+### Bug Fixes
+
+* :rewind: back to Node.js "latest" versions ([03440a3](https://github.com/thierrymichel/cz-ccgls/commit/03440a3dba9910706a91e2661f5050526d2609f4))
+
 ## [0.4.1](https://github.com/thierrymichel/cz-ccgls/compare/v0.4.0...v0.4.1) (2022-03-22)
 
 
