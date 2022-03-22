@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.4.1](https://github.com/thierrymichel/cz-ccgls/compare/v0.4.0...v0.4.1) (2022-03-22)
+
+
+### Bug Fixes
+
+* :arrow_down: downgrade cli-truncate ([da70155](https://github.com/thierrymichel/cz-ccgls/commit/da701554d333bd9a9104008c2a99c35822478a6d))
+
 # [0.4.0](https://github.com/thierrymichel/cz-ccgls/compare/v0.3.4...v0.4.0) (2022-03-18)
 
 
