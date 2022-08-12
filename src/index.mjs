@@ -128,7 +128,12 @@ async function loadOptions(config) {
     if (config.scopes) {
       options.scopes = config.scopes
     } else {
-      const Project = importFrom.silent(cwd, '@lerna/project')
+      let Project = importFrom.silent(cwd, '@lerna/project')
+
+      if (typeof Project === 'object' && Project.Project) {
+        // eslint-disable-next-line no-extra-semi
+        ;({ Project } = Project)
+      }
 
       if (Project) {
         const project = new Project(cwd)
