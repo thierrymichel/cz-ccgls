@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.4.3](https://github.com/thierrymichel/cz-ccgls/compare/v0.4.2...v0.4.3) (2022-08-12)
+
+
+### Bug Fixes
+
+* :bug: fix Project is not a constructor ([fb0efd9](https://github.com/thierrymichel/cz-ccgls/commit/fb0efd90221baf61bf75894a9d6913b4c0008894))
+
 ## [0.4.2](https://github.com/thierrymichel/cz-ccgls/compare/v0.4.1...v0.4.2) (2022-03-22)
 
 
