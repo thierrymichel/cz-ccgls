@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## [0.4.4](https://github.com/thierrymichel/cz-ccgls/compare/v0.4.3...v0.4.4) (2023-01-02)
+
+
+### Bug Fixes
+
+* 👽️ update emojis URL ([cc3ada8](https://github.com/thierrymichel/cz-ccgls/commit/cc3ada8bb16056ce49fa1610802b4422a51dcd18))
+* 🩹 do not close mentionned issue ([028bbf5](https://github.com/thierrymichel/cz-ccgls/commit/028bbf5e4e32000b5e9b4f27397cd2449d4e45bc))
+
 ## [0.4.3](https://github.com/thierrymichel/cz-ccgls/compare/v0.4.2...v0.4.3) (2022-08-12)
 
 
