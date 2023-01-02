@@ -35,8 +35,7 @@ const cache = {
   },
 }
 
-const GITMOJIS_URL =
-  'https://raw.githubusercontent.com/carloscuesta/gitmoji/master/src/data/gitmojis.json'
+const GITMOJIS_URL = 'https://gitmoji.dev/api/gitmojis'
 
 function getEmojis() {
   if (cache.ok()) {
