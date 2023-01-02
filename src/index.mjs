@@ -278,7 +278,8 @@ function format(answers) {
     ? wrap(`BREAKING CHANGE: ${answers.breaking.trim()}`, 100)
     : ''
   const footer = (answers.issues.match(/#\d+/g) || [])
-    .map(issue => `Closes ${issue}`)
+    // .map(issue => `Closes ${issue}`)
+    .map(issue => `[#${issue}]`)
     .join('\n')
 
   return [head, body, breaking, footer]
