@@ -55,6 +55,7 @@ function getEmojis() {
       return emojis
     })
     .catch(error => {
+      console.error(error)
       spinner.fail(`Error: ${error}`)
     })
 }
