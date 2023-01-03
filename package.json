@@ -60,7 +60,6 @@
     "longest": "^2.0.1",
     "node-fetch": "^3.0.0",
     "ora": "^6.0.1",
-    "path-exists": "^5.0.0",
     "read-pkg-up": "^9.0.0",
     "right-pad": "^1.0.1",
     "wrap-ansi": "^8.0.1"

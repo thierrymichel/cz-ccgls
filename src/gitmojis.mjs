@@ -3,7 +3,6 @@ import path from 'path'
 
 import fetch from 'node-fetch'
 import findCacheDir from 'find-cache-dir'
-import { pathExistsSync } from 'path-exists'
 import ora from 'ora'
 
 const GITMOJI_CACHE = {
@@ -15,7 +14,7 @@ const GITMOJI_CACHE = {
 const filename = path.join(GITMOJI_CACHE.DIR, GITMOJI_CACHE.FILE)
 const cache = {
   ok() {
-    if (pathExistsSync(filename)) {
+    if (fs.existsSync(filename)) {
       const { mtime } = fs.statSync(filename)
 
       return mtime.getMilliseconds() + GITMOJI_CACHE.TTL < Date.now()
@@ -27,7 +26,7 @@ const cache = {
     return Promise.resolve(JSON.parse(fs.readFileSync(filename)))
   },
   set(emojis) {
-    if (!pathExistsSync(path.dirname(filename))) {
+    if (!fs.existsSync(path.dirname(filename))) {
       fs.mkdirSync(path.dirname(filename), { recursive: true })
     }
 

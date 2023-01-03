@@ -2569,7 +2569,6 @@ __metadata:
     nps-utils: ^1.7.0
     nyc: ^15.1.0
     ora: ^6.0.1
-    path-exists: ^5.0.0
     prettier: ^2.4.1
     read-pkg-up: ^9.0.0
     right-pad: ^1.0.1
