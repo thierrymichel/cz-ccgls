@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.4.5](https://github.com/thierrymichel/cz-ccgls/compare/v0.4.4...v0.4.5) (2023-01-03)
+
+
+### Bug Fixes
+
+* :heavy_minus_sign: replace cli-truncate ([f6a7ad7](https://github.com/thierrymichel/cz-ccgls/commit/f6a7ad7b60663f38cfd9cde84df1ed1110f2c34c))
+
 ## [0.4.4](https://github.com/thierrymichel/cz-ccgls/compare/v0.4.3...v0.4.4) (2023-01-02)
 
 
