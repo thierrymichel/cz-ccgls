@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.4.6](https://github.com/thierrymichel/cz-ccgls/compare/v0.4.5...v0.4.6) (2023-01-03)
+
+
+### Bug Fixes
+
+* :heavy_minus_sign: replace path-exists ([1c9efab](https://github.com/thierrymichel/cz-ccgls/commit/1c9efab39c4722a0b7f4b0ddbb3e1d747f9f7819))
+
 ## [0.4.5](https://github.com/thierrymichel/cz-ccgls/compare/v0.4.4...v0.4.5) (2023-01-03)
 
 
