@@ -8,7 +8,6 @@ import longest from 'longest'
 import map from 'lodash.map'
 import { readPackageUp } from 'read-pkg-up'
 import rightPad from 'right-pad'
-import truncate from 'cli-truncate'
 import wrap from 'wrap-ansi'
 
 import { getEmojis } from './gitmojis.mjs'
@@ -19,6 +18,7 @@ const requireJSON = createRequire(
   import.meta.url || path.resolve(__dirname, '../node_modules') // CJS support
 )
 const types = requireJSON('conventional-commit-types')
+
 const conventionalTypes = types.types
 const cwd = process.cwd()
 const defaultConfig = {
@@ -37,6 +37,21 @@ const defaultConfig = {
   // types: {},
   // emojis: [],
   // scopes: [],
+}
+
+/**
+ * Truncate string
+ *
+ * @param {string} str original string
+ * @param {number} length max length
+ * @returns {string} truncated string
+ */
+function truncate(str, length) {
+  if (str.length <= length) {
+    return str
+  }
+
+  return `${str.slice(0, length - 1)}…`
 }
 
 /**
