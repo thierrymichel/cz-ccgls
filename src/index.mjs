@@ -32,6 +32,10 @@ const defaultConfig = {
   useEmojis: true,
   additionalEmojis: [],
   useScopes: true,
+  useLernaScopes: false,
+  useFolderScopes: false,
+  folderRoot: '.',
+  folderIgnore: [],
   additionalScopes: [],
   // You can use yours
   // types: {},
@@ -140,9 +144,13 @@ async function loadOptions(config) {
 
   // Load Lerna scopes if configured
   if (config.useScopes) {
+    let scopes = []
+
     if (config.scopes) {
-      options.scopes = config.scopes
-    } else {
+      scopes = scopes.concat(config.scopes)
+    }
+
+    if (config.useLernaScopes) {
       let Project = importFrom.silent(cwd, '@lerna/project')
 
       if (typeof Project === 'object' && Project.Project) {
@@ -153,16 +161,30 @@ async function loadOptions(config) {
       if (Project) {
         const project = new Project(cwd)
         const packages = await project.getPackages()
-
-        options.scopes = packages
+        const lernaScopes = packages
           .map(pkg => pkg.name)
           .map(name => (name.charAt(0) === '@' ? name.split('/')[1] : name))
-      } else {
-        options.scopes = []
+
+        scopes = scopes.concat(lernaScopes)
       }
     }
 
-    options.scopes = [...options.scopes, ...config.additionalScopes]
+    if (config.useFolderScopes) {
+      const ignores = ['.git', 'node_modules'].concat(config.folderIgnore)
+      const root = path.resolve(cwd, config.folderRoot)
+      const folderScopes = fs
+        .readdirSync(root, { withFileTypes: true })
+        .filter(
+          file =>
+            file.isDirectory() &&
+            !file.name.startsWith('.') &&
+            !ignores.includes(file.name)
+        )
+        .map(file => file.name)
+      scopes = scopes.concat(folderScopes)
+    }
+
+    options.scopes = [...scopes, ...config.additionalScopes]
   }
 
   return options
@@ -349,11 +371,11 @@ function formatEmojis(emojis) {
   // const length = longest(Object.keys(types)).length + 2;
 
   return emojis.map(item => {
-    const { emoji, code, description } = item
+    const { emoji, description } = item
 
     return {
       name: `${emoji}: ${description}`,
-      value: code,
+      value: emoji,
     }
   })
 }

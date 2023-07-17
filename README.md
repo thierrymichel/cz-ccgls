@@ -49,6 +49,18 @@ Add some `config` information to your `package.json`
 
 > [More infos in the `commitizen` documentation](https://github.com/commitizen/cz-cli#optional-install-and-run-commitizen-locally)
 
+### Configuration
+
+Add some `config` information to your `package.json` ([default values](src/index.mjs#L24))
+
+```json
+"config": {
+  "cz-ccgls": {
+    "useScopes": true
+  }
+},
+```
+
 ---
 
 ### Related
