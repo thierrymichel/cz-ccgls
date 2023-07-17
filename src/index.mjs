@@ -1,5 +1,6 @@
 import fs from 'fs'
 import path from 'path'
+import { execSync } from 'child_process'
 
 import autocomplete from 'inquirer-autocomplete-prompt'
 import fuzzy from 'fuzzy'
@@ -33,6 +34,7 @@ const defaultConfig = {
   additionalEmojis: [],
   useScopes: true,
   useLernaScopes: false,
+  useBranchScopes: false,
   useFolderScopes: false,
   folderRoot: '.',
   folderIgnore: [],
@@ -116,14 +118,6 @@ async function loadOptions(config) {
 
   options.types = formatTypes(types)
 
-  // Additional types
-  // if (config.additionalTypes) {
-  //   options.types = {
-  //     ...options.types,
-  //     ...config.additionalTypes,
-  //   };
-  // }
-
   // Gitmoji
   if (config.useEmojis) {
     let emojis = []
@@ -182,6 +176,10 @@ async function loadOptions(config) {
         )
         .map(file => file.name)
       scopes = scopes.concat(folderScopes)
+    }
+
+    if (config.useBranchScopes) {
+      options.useBranchScopes = true
     }
 
     options.scopes = [...scopes, ...config.additionalScopes]
@@ -272,8 +270,35 @@ function fillPrompt(options) {
     },
   ]
 
+  if (options.useBranchScopes) {
+    const scopeIndex = prompts.findIndex(p => p.name === 'scope')
+
+    prompts.splice(scopeIndex + 1, 0, {
+      type: 'input',
+      name: 'branch',
+      message: 'Use branch name into scope:',
+      default: () => {
+        const branch = execSync('git branch --show-current').toString().trim()
+
+        if (branch === 'master' || branch === 'main') {
+          return ''
+        }
+
+        if (branch.startsWith('feature/')) {
+          const [, ...name] = branch.split('/')
+
+          return name.join('/')
+        }
+
+        return branch
+      },
+    })
+  }
+
   if (emojis) {
-    prompts.splice(2, 0, {
+    const subjectIndex = prompts.findIndex(p => p.name === 'subject')
+
+    prompts.splice(subjectIndex, 0, {
       type: 'autocomplete',
       name: 'emoji',
       message: 'Choose an emoji:',
@@ -304,15 +329,21 @@ function fillPrompt(options) {
  */
 function format(answers) {
   // Optional scope with parenthesis
-  const scope = answers.scope ? `(${answers.scope.trim()})` : ''
+  const scope = answers.scope ? answers.scope.trim() : ''
+  const branch = answers.branch ? answers.branch.trim() : ''
+
+  const formatedScope = scope === '' ? branch : `(${scope}${branch})`
   // Optional subject with emoji
   const subject = answers.emoji ? `${answers.emoji} ${answers.subject}` : ''
 
   // Build head line, add emoji and limit to 100
-  const head = truncate(`${answers.type}${scope}: ${subject.trim()}`, 100)
-  const body = answers.body ? wrap(answers.body, 100) : ''
+  const head = `${truncate(
+    `${answers.type}${formatedScope}: ${subject.trim()}`,
+    110
+  )}${answers.issues ? ` [#${answers.issues}]` : ''}`
+  const body = answers.body ? wrap(answers.body, 120) : ''
   const breaking = answers.breaking
-    ? wrap(`BREAKING CHANGE: ${answers.breaking.trim()}`, 100)
+    ? wrap(`BREAKING CHANGE: ${answers.breaking.trim()}`, 120)
     : ''
   const footer = (answers.issues.match(/#\d+/g) || [])
     // .map(issue => `Closes ${issue}`)
