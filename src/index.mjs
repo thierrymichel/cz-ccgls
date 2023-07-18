@@ -12,6 +12,7 @@ import rightPad from 'right-pad'
 import wrap from 'wrap-ansi'
 
 import { getEmojis } from './gitmojis.mjs'
+import { getIssues } from './gitlab.mjs'
 
 // https://www.stefanjudis.com/snippets/how-to-import-json-files-in-es-modules-node-js/
 import { createRequire } from 'module'
@@ -34,11 +35,12 @@ const defaultConfig = {
   additionalEmojis: [],
   useScopes: true,
   useLernaScopes: false,
-  useBranchScopes: false,
-  useFolderScopes: false,
+  useBranchScopes: true,
+  useFolderScopes: true,
   folderRoot: '.',
   folderIgnore: [],
   additionalScopes: [],
+  useGitlab: true,
   // You can use yours
   // types: {},
   // emojis: [],
@@ -185,7 +187,37 @@ async function loadOptions(config) {
     options.scopes = [...scopes, ...config.additionalScopes]
   }
 
+  if (config.useGitlab) {
+    let issues = [
+      {
+        name: '[none]',
+        value: '',
+      },
+    ]
+
+    const gitlabIssues = await getIssues()
+    issues = issues.concat(gitlabIssues)
+
+    options.issues = issues
+  }
+
   return options
+}
+
+function getSource(data) {
+  return function render(_answersSoFar, input) {
+    const query = input || ''
+
+    return new Promise(resolve => {
+      const result = fuzzy.filter(query, data, {
+        extract: el => el.name,
+      })
+
+      setTimeout(() => {
+        resolve(result.map(el => el.original))
+      }, 100)
+    })
+  }
 }
 
 /**
@@ -202,27 +234,14 @@ async function loadOptions(config) {
  * @return {array} list of questions
  */
 function fillPrompt(options) {
-  const { types, scopes, emojis } = options
+  const { types, scopes, emojis, issues } = options
   const prompts = [
     {
       type: 'autocomplete',
       name: 'type',
       // eslint-disable-next-line quotes
       message: "Select the type of change you're committing:",
-
-      source: (_answersSoFar, input) => {
-        const query = input || ''
-
-        return new Promise(resolve => {
-          const result = fuzzy.filter(query, types, {
-            extract: el => el.name,
-          })
-
-          setTimeout(() => {
-            resolve(result.map(el => el.original))
-          }, 100)
-        })
-      },
+      source: getSource(types),
     },
     {
       type: scopes ? 'list' : 'input',
@@ -252,6 +271,12 @@ function fillPrompt(options) {
       message: 'Provide a longer description:\n',
     },
     {
+      type: issues ? 'autocomplete' : 'input',
+      name: 'issues',
+      message: 'Pick related issue:',
+      source: getSource(issues),
+    },
+    {
       type: 'confirm',
       name: 'isBreaking',
       message: 'Are there any breaking changes?',
@@ -262,11 +287,6 @@ function fillPrompt(options) {
       name: 'breaking',
       message: 'Describe the breaking changes:\n',
       when: answers => answers.isBreaking,
-    },
-    {
-      type: 'input',
-      name: 'issues',
-      message: 'List any issue closed (#1, ...):',
     },
   ]
 
@@ -332,7 +352,18 @@ function format(answers) {
   const scope = answers.scope ? answers.scope.trim() : ''
   const branch = answers.branch ? answers.branch.trim() : ''
 
-  const formatedScope = scope === '' ? branch : `(${scope}${branch})`
+  let formatedScope
+
+  if (scope !== '' && branch !== '') {
+    formatedScope = `${scope}:${branch}`
+  } else {
+    formatedScope = scope || branch
+  }
+
+  if (formatedScope !== '') {
+    formatedScope = `(${formatedScope})`
+  }
+
   // Optional subject with emoji
   const subject = answers.emoji ? `${answers.emoji} ${answers.subject}` : ''
 
@@ -345,12 +376,8 @@ function format(answers) {
   const breaking = answers.breaking
     ? wrap(`BREAKING CHANGE: ${answers.breaking.trim()}`, 120)
     : ''
-  const footer = (answers.issues.match(/#\d+/g) || [])
-    // .map(issue => `Closes ${issue}`)
-    .map(issue => `[#${issue}]`)
-    .join('\n')
 
-  return [head, body, breaking, footer]
+  return [head, body, breaking]
     .filter(part => part.length > 0)
     .join('\n\n')
     .trim()
