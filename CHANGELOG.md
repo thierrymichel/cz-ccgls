@@ -1,5 +1,14 @@
 # CHANGELOG
 
+# [0.5.0](https://github.com/thierrymichel/cz-ccgls/compare/v0.4.6...v0.5.0) (2023-07-18)
+
+
+### Features
+
+* ✨ add branchScope support ([54857b1](https://github.com/thierrymichel/cz-ccgls/commit/54857b1c4600cf6f220b291fd8d9126db1807d66))
+* ✨ add folderScopes support ([caff648](https://github.com/thierrymichel/cz-ccgls/commit/caff648de7c0427bbd2c7f043b3d340ef42a0ed2))
+* ✨ add Gitlab issues support ([77cb008](https://github.com/thierrymichel/cz-ccgls/commit/77cb0089f2101584af521a54312fe1e95243a4aa))
+
 ## [0.4.6](https://github.com/thierrymichel/cz-ccgls/compare/v0.4.5...v0.4.6) (2023-01-03)
 
 
