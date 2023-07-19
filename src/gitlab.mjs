@@ -29,14 +29,18 @@ async function getIssues() {
   try {
     // ? manage pagination?
     const page = 1
+    const perPage = 100
     const { api, token } = getApiInfos()
     const projectPath = getProjectPath()
     const url = `${api}/projects/${projectPath}/issues`
-    const res = await fetch(`${url}?state=opened&per_page=5&page=${page}`, {
-      headers: {
-        'PRIVATE-TOKEN': token,
-      },
-    })
+    const res = await fetch(
+      `${url}?state=opened&per_page=${perPage}&page=${page}`,
+      {
+        headers: {
+          'PRIVATE-TOKEN': token,
+        },
+      }
+    )
 
     if (!res.ok) {
       console.error(
