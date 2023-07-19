@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.5.1](https://github.com/thierrymichel/cz-ccgls/compare/v0.5.0...v0.5.1) (2023-07-19)
+
+
+### Bug Fixes
+
+* 🩹 increase per page issues ([60ac700](https://github.com/thierrymichel/cz-ccgls/commit/60ac700d131364f531b27cfc87507a09060a8f72))
+
 # [0.5.0](https://github.com/thierrymichel/cz-ccgls/compare/v0.4.6...v0.5.0) (2023-07-18)
 
 
