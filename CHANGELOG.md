@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## [0.5.3](https://github.com/thierrymichel/cz-ccgls/compare/v0.5.2...v0.5.3) (2023-09-12)
+
+
+### Bug Fixes
+
+* ⏪ test ([63328f8](https://github.com/thierrymichel/cz-ccgls/commit/63328f8e2e27a1b4fce69b249a6dc4af70bfd830))
+* ⏪️ test ([5c50b17](https://github.com/thierrymichel/cz-ccgls/commit/5c50b17e9ee22ac61f9d1cbba0c94b74cf1e0800))
+* � fix emoji with invisible "white space" ([d34766c](https://github.com/thierrymichel/cz-ccgls/commit/d34766cf150318058c7d9046042754047aa8be2f))
+
 ## [0.5.2](https://github.com/thierrymichel/cz-ccgls/compare/v0.5.1...v0.5.2) (2023-09-12)
 
 
