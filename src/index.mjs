@@ -365,14 +365,17 @@ function format(answers) {
   }
 
   // Optional subject with emoji
-  if (answers.emoji) {
-    console.log('EEEE', answers.emoji)
-    console.log('LLLL', answers.emoji.length)
-    console.log('SSSS', answers.emoji.split(''))
+  let { emoji } = answers
+  if (emoji && emoji.length > 1) {
+    console.log('EEEE', emoji)
+    console.log('LLLL', emoji.length)
+    console.log('SSSS', emoji.split(''))
+    ;[emoji] = emoji.split('')
+    console.log('EEEE', emoji)
+    console.log('LLLL', emoji.length)
+    console.log('SSSS', emoji.split(''))
   }
-  const subject = answers.emoji
-    ? `${answers.emoji} ${answers.subject}`
-    : answers.subject
+  const subject = emoji ? `${emoji} ${answers.subject}` : answers.subject
 
   // Build head line, add emoji and limit to 100
   const head = `${truncate(
