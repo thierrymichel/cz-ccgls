@@ -365,6 +365,11 @@ function format(answers) {
   }
 
   // Optional subject with emoji
+  if (answers.emoji) {
+    console.log('EEEE', answers.emoji)
+    console.log('LLLL', answers.emoji.length)
+    console.log('SSSS', answers.emoji.split(''))
+  }
   const subject = answers.emoji
     ? `${answers.emoji} ${answers.subject}`
     : answers.subject
