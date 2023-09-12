@@ -365,7 +365,9 @@ function format(answers) {
   }
 
   // Optional subject with emoji
-  const subject = answers.emoji ? `${answers.emoji} ${answers.subject}` : ''
+  const subject = answers.emoji
+    ? `${answers.emoji} ${answers.subject}`
+    : answers.subject
 
   // Build head line, add emoji and limit to 100
   const head = `${truncate(
