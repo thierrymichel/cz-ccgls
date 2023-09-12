@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.5.2](https://github.com/thierrymichel/cz-ccgls/compare/v0.5.1...v0.5.2) (2023-09-12)
+
+
+### Bug Fixes
+
+* 🩹 add subject if no emoji ([12d5aed](https://github.com/thierrymichel/cz-ccgls/commit/12d5aed387a629c1c62bae1a322d18747c363098))
+
 ## [0.5.1](https://github.com/thierrymichel/cz-ccgls/compare/v0.5.0...v0.5.1) (2023-07-19)
 
 
