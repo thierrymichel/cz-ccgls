@@ -367,9 +367,16 @@ function format(answers) {
   // Optional subject with emoji
   let { emoji } = answers
 
+  // https://github.com/mathiasbynens/emoji-regex/issues/61
+  // https://stackoverflow.com/questions/38100329/what-does-u-ufe0f-in-an-emoji-mean-is-it-the-same-if-i-delete-it
   if (emoji && emoji.length > 1) {
-    ;[emoji] = emoji.split('')
+    const variation = emoji[emoji.length - 1]
+
+    if (['\uFE0E', '\uFE0F'].includes(variation)) {
+      emoji = emoji.slice(0, -1)
+    }
   }
+
   const subject = emoji ? `${emoji} ${answers.subject}` : answers.subject
 
   // Build head line, add emoji and limit to 100
