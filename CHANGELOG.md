@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.5.4](https://github.com/thierrymichel/cz-ccgls/compare/v0.5.3...v0.5.4) (2023-09-21)
+
+
+### Bug Fixes
+
+* � fix variation selector ([d7b9515](https://github.com/thierrymichel/cz-ccgls/commit/d7b951539fe9bbb3dee5e9fb5788e104f69e2294))
+
 ## [0.5.3](https://github.com/thierrymichel/cz-ccgls/compare/v0.5.2...v0.5.3) (2023-09-12)
 
 
