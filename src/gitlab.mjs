@@ -54,7 +54,7 @@ async function fetchIssues(url, config, page = 1, issues = []) {
     const nextPage = Number(res.headers.get('x-next-page'))
 
     if (nextPage > 0) {
-      return getIssues(url, config, nextPage, formattedIssues)
+      return fetchIssues(url, config, nextPage, formattedIssues)
     }
 
     return formattedIssues
