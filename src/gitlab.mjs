@@ -25,21 +25,12 @@ function getProjectPath() {
   return projectPath
 }
 
-async function getIssues() {
+async function fetchIssues(url, config, page = 1, issues = []) {
   try {
-    // ? manage pagination?
-    const page = 1
     const perPage = 100
-    const { api, token } = getApiInfos()
-    const projectPath = getProjectPath()
-    const url = `${api}/projects/${projectPath}/issues`
     const res = await fetch(
       `${url}?state=opened&per_page=${perPage}&page=${page}`,
-      {
-        headers: {
-          'PRIVATE-TOKEN': token,
-        },
-      }
+      config
     )
 
     if (!res.ok) {
@@ -53,10 +44,39 @@ async function getIssues() {
     }
 
     const data = await res.json()
-    const issues = data.map(issue => ({
-      name: `#${issue.iid} - ${issue.title}`,
-      value: issue.iid,
-    }))
+    const formattedIssues = issues.concat(
+      data.map(issue => ({
+        name: `#${issue.iid} - ${issue.title}`,
+        value: issue.iid,
+      }))
+    )
+
+    const nextPage = Number(res.headers.get('x-next-page'))
+
+    if (nextPage > 0) {
+      return getIssues(url, config, nextPage, formattedIssues)
+    }
+
+    return formattedIssues
+  } catch (error) {
+    console.error(error.message)
+
+    return []
+  }
+}
+
+async function getIssues() {
+  try {
+    const { api, token } = getApiInfos()
+    const projectPath = getProjectPath()
+    const url = `${api}/projects/${projectPath}/issues`
+    const config = {
+      headers: {
+        'PRIVATE-TOKEN': token,
+      },
+    }
+
+    const issues = await fetchIssues(url, config)
 
     return issues
   } catch (error) {
