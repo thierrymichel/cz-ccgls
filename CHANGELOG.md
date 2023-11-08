@@ -1,5 +1,12 @@
 # CHANGELOG
 
+# [0.6.0](https://github.com/thierrymichel/cz-ccgls/compare/v0.5.4...v0.6.0) (2023-11-08)
+
+
+### Features
+
+* ✨ support gitlab pagination ([c3ccc4d](https://github.com/thierrymichel/cz-ccgls/commit/c3ccc4d1d95b18d4a89373f31dc80e31546d8178))
+
 ## [0.5.4](https://github.com/thierrymichel/cz-ccgls/compare/v0.5.3...v0.5.4) (2023-09-21)
 
 
