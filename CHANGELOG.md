@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.6.1](https://github.com/thierrymichel/cz-ccgls/compare/v0.6.0...v0.6.1) (2023-11-08)
+
+
+### Bug Fixes
+
+* 🐛 fix wrong function call ([0a5c8dd](https://github.com/thierrymichel/cz-ccgls/commit/0a5c8ddb65ac46934cf5d66c9cf1602af6afe173))
+
 # [0.6.0](https://github.com/thierrymichel/cz-ccgls/compare/v0.5.4...v0.6.0) (2023-11-08)
 
 
