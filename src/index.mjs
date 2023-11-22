@@ -168,6 +168,7 @@ async function loadOptions(config) {
     if (config.useFolderScopes) {
       const ignores = ['.git', 'node_modules'].concat(config.folderIgnore)
       const root = path.resolve(cwd, config.folderRoot)
+      const { name: currentFolder } = path.parse(cwd)
       const folderScopes = fs
         .readdirSync(root, { withFileTypes: true })
         .filter(
@@ -177,7 +178,9 @@ async function loadOptions(config) {
             !ignores.includes(file.name)
         )
         .map(file => file.name)
+
       scopes = scopes.concat(folderScopes)
+      options.currentFolder = currentFolder
     }
 
     if (config.useBranchScopes) {
@@ -247,6 +250,10 @@ function fillPrompt(options) {
       type: scopes ? 'list' : 'input',
       name: 'scope',
       message: 'Specify a scope:',
+      default:
+        scopes && scopes.includes(options.currentFolder)
+          ? options.currentFolder
+          : '',
       choices:
         scopes &&
         [
