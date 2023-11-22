@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.6.2](https://github.com/thierrymichel/cz-ccgls/compare/v0.6.1...v0.6.2) (2023-11-22)
+
+
+### Bug Fixes
+
+* 🩹 no sprint/… branch scope ([ae90433](https://github.com/thierrymichel/cz-ccgls/commit/ae904333fa82bb8775045841d00496a9473b632e))
+
 ## [0.6.1](https://github.com/thierrymichel/cz-ccgls/compare/v0.6.0...v0.6.1) (2023-11-08)
 
 
