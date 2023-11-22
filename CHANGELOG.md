@@ -1,5 +1,12 @@
 # CHANGELOG
 
+# [0.7.0](https://github.com/thierrymichel/cz-ccgls/compare/v0.6.2...v0.7.0) (2023-11-22)
+
+
+### Features
+
+* ✨ get (and pre-select) current folder as scope ([c4b0518](https://github.com/thierrymichel/cz-ccgls/commit/c4b05187e8f6a9d7469b5b0480d1599d6bde0a50))
+
 ## [0.6.2](https://github.com/thierrymichel/cz-ccgls/compare/v0.6.1...v0.6.2) (2023-11-22)
 
 
