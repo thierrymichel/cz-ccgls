@@ -300,7 +300,12 @@ function fillPrompt(options) {
       default: () => {
         const branch = execSync('git branch --show-current').toString().trim()
 
-        if (branch === 'master' || branch === 'main') {
+        // No branch scope
+        if (
+          branch === 'master' ||
+          branch === 'main' ||
+          branch.startsWith('sprint/')
+        ) {
           return ''
         }
 
