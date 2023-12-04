@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.7.1](https://github.com/thierrymichel/cz-ccgls/compare/v0.7.0...v0.7.1) (2023-12-04)
+
+
+### Bug Fixes
+
+* 🧑‍💻 improve scope suggestion ([29c00dc](https://github.com/thierrymichel/cz-ccgls/commit/29c00dc3e225901a957bac09e7f4041a5e8b0d66))
+
 # [0.7.0](https://github.com/thierrymichel/cz-ccgls/compare/v0.6.2...v0.7.0) (2023-11-22)
 
 
