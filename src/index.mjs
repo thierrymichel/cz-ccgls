@@ -311,15 +311,14 @@ function fillPrompt(options) {
         if (
           branch === 'master' ||
           branch === 'main' ||
-          branch.startsWith('sprint/')
+          branch.startsWith('sprint/') ||
+          /^((subfeature|sf)\/)?sprint-\d+\/.*/.test(branch)
         ) {
           return ''
         }
 
-        if (branch.startsWith('feature/')) {
-          const [, ...name] = branch.split('/')
-
-          return name.join('/')
+        if (branch.startsWith('feature/') || branch.startsWith('subfeature/')) {
+          return branch.split('/').pop()
         }
 
         return branch
