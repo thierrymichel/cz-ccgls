@@ -56,6 +56,7 @@
     "import-from": "^4.0.0",
     "inquirer": "^8.2.0",
     "inquirer-autocomplete-prompt": "^1.4.0",
+    "inquirer-maxlength-input-prompt": "^1.0.2",
     "lodash.map": "^4.6.0",
     "longest": "^2.0.1",
     "node-fetch": "^3.0.0",

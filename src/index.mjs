@@ -2,7 +2,8 @@ import fs from 'fs'
 import path from 'path'
 import { execSync } from 'child_process'
 
-import autocomplete from 'inquirer-autocomplete-prompt'
+import autocompletePrompt from 'inquirer-autocomplete-prompt'
+import maxLengthInputPrompt from 'inquirer-maxlength-input-prompt'
 import fuzzy from 'fuzzy'
 import importFrom from 'import-from'
 import longest from 'longest'
@@ -54,13 +55,13 @@ const defaultConfig = {
  * @param {number} length max length
  * @returns {string} truncated string
  */
-function truncate(str, length) {
-  if (str.length <= length) {
-    return str
-  }
+// function truncate(str, length) {
+//   if (str.length <= length) {
+//     return str
+//   }
 
-  return `${str.slice(0, length - 1)}…`
-}
+//   return `${str.slice(0, length - 1)}…`
+// }
 
 /**
  * Load configuration form package.json or .czrc
@@ -268,9 +269,10 @@ function fillPrompt(options) {
         ].concat(scopes),
     },
     {
-      type: 'input',
+      type: 'maxlength-input',
       name: 'subject',
       message: 'Write a short description:\n',
+      maxLength: 100,
     },
     {
       type: 'input',
@@ -390,14 +392,17 @@ function format(answers) {
 
   const subject = emoji ? `${emoji} ${answers.subject}` : answers.subject
 
-  // Build head line, add emoji and limit to 100
-  const head = `${truncate(
-    `${answers.type}${formatedScope}: ${subject.trim()}`,
-    110
-  )}${answers.issues ? ` [#${answers.issues}]` : ''}`
-  const body = answers.body ? wrap(answers.body, 120) : ''
+  // Build head line, add emoji (~~and limit to 100~~)
+  // Use 'maxlength-input' in place
+  // const head = `${truncate(
+  //   `${answers.type}${formatedScope}: ${subject.trim()}`,
+  //   110
+  const head = `${`${answers.type}${formatedScope}: ${subject.trim()}`}${
+    answers.issues ? ` [#${answers.issues}]` : ''
+  }`
+  const body = answers.body ? wrap(answers.body, 80) : ''
   const breaking = answers.breaking
-    ? wrap(`BREAKING CHANGE: ${answers.breaking.trim()}`, 120)
+    ? wrap(`BREAKING CHANGE: ${answers.breaking.trim()}`, 80)
     : ''
 
   return [head, body, breaking]
@@ -410,7 +415,8 @@ function format(answers) {
  * Export `prompter` method for `commitizen`.
  */
 export function prompter(cz, commit) {
-  cz.prompt.registerPrompt('autocomplete', autocomplete)
+  cz.prompt.registerPrompt('autocomplete', autocompletePrompt)
+  cz.prompt.registerPrompt('maxlength-input', maxLengthInputPrompt)
   loadConfig()
     .then(loadOptions)
     .then(fillPrompt)
