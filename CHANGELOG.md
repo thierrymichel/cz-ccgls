@@ -1,5 +1,12 @@
 # CHANGELOG
 
+# [0.8.0](https://github.com/thierrymichel/cz-ccgls/compare/v0.7.1...v0.8.0) (2024-09-10)
+
+
+### Features
+
+* 🧑‍💻 add input-max-length ([d8729d5](https://github.com/thierrymichel/cz-ccgls/commit/d8729d5f95ad36f3689fae80afe45d823de644a4))
+
 ## [0.7.1](https://github.com/thierrymichel/cz-ccgls/compare/v0.7.0...v0.7.1) (2023-12-04)
 
 
