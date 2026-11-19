@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## [0.8.1](https://github.com/thierrymichel/cz-ccgls/compare/v0.8.0...v0.8.1) (2026-11-19)
+
+
+### Bug Fixes
+
+* 💚 fix release with Trusted Publisher ([7da70be](https://github.com/thierrymichel/cz-ccgls/commit/7da70becfa24f4607433e8c39124cc76fd3dfd48))
+
 # [0.8.0](https://github.com/thierrymichel/cz-ccgls/compare/v0.7.1...v0.8.0) (2024-09-10)
 
 
