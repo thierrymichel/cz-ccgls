@@ -1,0 +1,5 @@
+# Versions come from the files already in the repo:
+# - Node: .nvmrc
+# - Yarn: package.json "packageManager" (binary vendored at .yarn/releases)
+[settings]
+idiomatic_version_file_enable_tools = ["node", "yarn"]
