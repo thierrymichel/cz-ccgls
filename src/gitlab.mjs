@@ -45,10 +45,12 @@ async function fetchIssues(url, config, page = 1, issues = []) {
 
     const data = await res.json()
     const formattedIssues = issues.concat(
-      data.map(issue => ({
-        name: `#${issue.iid} - ${issue.title}`,
-        value: issue.iid,
-      }))
+      data
+        .filter(issue => issue.issue_type === 'issue' || issue.issue_type === 'task')
+        .map(issue => ({
+          name: `#${issue.iid} - ${issue.title}`,
+          value: issue.iid,
+        }))
     )
 
     const nextPage = Number(res.headers.get('x-next-page'))
